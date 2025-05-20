@@ -12,7 +12,7 @@ public interface PontoColetaRepository extends JpaRepository<PontoColetaModel, L
 
     List<PontoColetaModel> findByTipoDoacaoIdAndCidadeId(Long tipoDoacaoId, Long cidadeId);
 
-    @Query("SELECT DISTINCT p.cidade FROM PontoColetaModel p WHERE p.tipo_doacao.id = :tipoId")
+    @Query("SELECT DISTINCT p.cidade FROM PontoColetaModel p WHERE p.tipoDoacao.id = :tipoId")
     List<CidadeModel> findCidadesComPontoPorTipo(@Param("tipoId") Long tipoId);
 }
 
