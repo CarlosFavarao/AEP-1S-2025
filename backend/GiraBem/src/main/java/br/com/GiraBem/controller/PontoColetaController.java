@@ -17,6 +17,13 @@ public class PontoColetaController {
     private PontoColetaService pontoColetaService;
 
     //CRUD e Busca Padrão
+
+    @PostMapping
+    public ResponseEntity<PontoColetaModel> salvar(@RequestBody PontoColetaModel pontoColeta){
+        PontoColetaModel salvo = pontoColetaService.salvarPonto(pontoColeta);
+        return ResponseEntity.status(201).body(salvo);
+    }
+
     @GetMapping
     public List<PontoColetaModel> listarTodos(){
         return pontoColetaService.listarTodos();
