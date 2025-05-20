@@ -17,8 +17,9 @@ public class CidadeController {
     CidadeService cidadeService;
 
     @PostMapping
-    public CidadeModel salvarCidade(@RequestBody CidadeModel cidade){
-        return cidadeService.salvar(cidade);
+    public ResponseEntity<CidadeModel> salvar(@RequestBody CidadeModel cidade){
+        CidadeModel salvo = cidadeService.salvar(cidade);
+        return ResponseEntity.status(201).body(salvo);
     }
 
     @GetMapping //Provavelmente não será utilizado
