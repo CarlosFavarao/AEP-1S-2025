@@ -1,4 +1,4 @@
-package br.com.GiraBem.Repository;
+package br.com.GiraBem.repository;
 
 import br.com.GiraBem.model.CidadeModel;
 import org.springframework.data.jpa.repository.JpaRepository;

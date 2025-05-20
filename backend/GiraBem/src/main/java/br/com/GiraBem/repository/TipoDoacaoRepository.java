@@ -1,4 +1,4 @@
-package br.com.GiraBem.Repository;
+package br.com.GiraBem.repository;
 
 import br.com.GiraBem.model.PontoColetaModel;
 import br.com.GiraBem.model.TipoDoacaoModel;

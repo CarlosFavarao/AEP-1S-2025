@@ -20,7 +20,7 @@ public class PontoColetaModel {
 
     @ManyToOne
     @JoinColumn (name = "tipo_doacao_id", nullable = false)
-    private TipoDoacaoModel tipo_doacao;
+    private TipoDoacaoModel tipoDoacao;
 
     @ManyToOne
     @JoinColumn (name = "cidade_id", nullable = false)
