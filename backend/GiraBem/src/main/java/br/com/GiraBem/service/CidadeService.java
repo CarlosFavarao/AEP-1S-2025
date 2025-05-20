@@ -25,11 +25,19 @@ public class CidadeService {
         return cidadeRepository.findById(id);
     }
 
-    public CidadeModel atualizar(CidadeModel cidade){
-        return cidadeRepository.save(cidade);
+    public Optional<CidadeModel> atualizar(Long id, CidadeModel dadosAtualizados){
+        return cidadeRepository.findById(id).map(cidade -> {
+            cidade.setNome(dadosAtualizados.getNome());
+            return cidadeRepository.save(cidade);
+        });
     }
 
-    public void deletar(Long id) {
-        cidadeRepository.deleteById(id);
+    public boolean deletar(Long id) {
+        if (cidadeRepository.existsById(id)){
+            cidadeRepository.deleteById(id);
+            return true;
+        }else{
+            return false;
+        }
     }
 }

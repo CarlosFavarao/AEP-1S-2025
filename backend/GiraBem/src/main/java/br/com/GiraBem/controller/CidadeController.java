@@ -3,6 +3,7 @@ package br.com.GiraBem.controller;
 import br.com.GiraBem.model.CidadeModel;
 import br.com.GiraBem.service.CidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,13 +32,18 @@ public class CidadeController {
     }
 
     @PutMapping("/{id}")
-    public CidadeModel atualizarCidade(@RequestBody CidadeModel cidade){
-        return cidadeService.atualizar(cidade);
+    public ResponseEntity<CidadeModel> atualizar(@PathVariable Long id, @RequestBody CidadeModel dados) {
+        return cidadeService.atualizar(id, dados)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    public void deletarCidade(@PathVariable Long id){
-        cidadeService.deletar(id);
+    public ResponseEntity<Void> deletarCidade(@PathVariable Long id){
+        if (cidadeService.deletar(id)){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }
