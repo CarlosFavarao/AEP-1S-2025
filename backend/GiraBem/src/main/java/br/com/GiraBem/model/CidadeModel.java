@@ -13,7 +13,9 @@ public class CidadeModel {
     @Column(nullable = false)
     private String nome;
 
-    public long getId() {
+    public CidadeModel() {};
+
+    public Long getId() {
         return id;
     }
 

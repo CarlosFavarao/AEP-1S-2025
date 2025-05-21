@@ -15,7 +15,9 @@ public class TipoDoacaoModel {
     @Column(nullable = false)
     private String nome;
 
-    public long getId() {
+    public TipoDoacaoModel() {}
+
+    public Long getId() {
         return id;
     }
 

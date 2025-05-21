@@ -17,14 +17,16 @@ public class PontoColetaModel {
     private String endereco;
 
     @ManyToOne
-    @JoinColumn (name = "tipo_doacao_id", nullable = false)
+    @JoinColumn(name = "tipo_doacao_id", nullable = false)
     private TipoDoacaoModel tipoDoacao;
 
     @ManyToOne
-    @JoinColumn (name = "cidade_id", nullable = false)
+    @JoinColumn(name = "cidade_id", nullable = false)
     private CidadeModel cidade;
 
-    public long getId() {
+    public PontoColetaModel() {};
+
+    public Long getId() {
         return id;
     }
 
