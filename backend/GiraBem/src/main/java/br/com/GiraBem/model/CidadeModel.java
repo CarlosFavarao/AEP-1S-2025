@@ -1,9 +1,7 @@
 package br.com.GiraBem.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
-@Data
 @Entity
 @Table(name = "cidade")
 public class CidadeModel {
@@ -14,4 +12,16 @@ public class CidadeModel {
 
     @Column(nullable = false)
     private String nome;
+
+    public long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

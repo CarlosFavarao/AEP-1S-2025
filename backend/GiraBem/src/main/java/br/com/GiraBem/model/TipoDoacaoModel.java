@@ -1,9 +1,8 @@
 package br.com.GiraBem.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Setter;
 
-@Data
 @Entity
 @Table(name = "tipo_doacao")
 public class TipoDoacaoModel {
@@ -12,6 +11,19 @@ public class TipoDoacaoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Setter
     @Column(nullable = false)
     private String nome;
+
+    public long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

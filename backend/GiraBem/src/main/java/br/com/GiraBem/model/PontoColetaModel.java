@@ -1,9 +1,7 @@
 package br.com.GiraBem.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
-@Data
 @Entity
 @Table (name = "ponto_coleta")
 public class PontoColetaModel {
@@ -26,4 +24,39 @@ public class PontoColetaModel {
     @JoinColumn (name = "cidade_id", nullable = false)
     private CidadeModel cidade;
 
+    public long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public TipoDoacaoModel getTipoDoacao() {
+        return tipoDoacao;
+    }
+
+    public CidadeModel getCidade() {
+        return cidade;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public void setTipoDoacao(TipoDoacaoModel tipoDoacao) {
+        this.tipoDoacao = tipoDoacao;
+    }
+
+    public void setCidade(CidadeModel cidade) {
+        this.cidade = cidade;
+    }
 }
