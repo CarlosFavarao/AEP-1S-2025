@@ -57,7 +57,7 @@ public class PontoColetaController {
         return pontoColetaService.filtrarPorTipoECidade(tipoDoacaoId, cidadeId);
     }
 
-    @GetMapping("cidades-disponiveis")
+    @GetMapping("/cidades-disponiveis")
     public List<CidadeModel> listarCidadesPorTipo(@RequestParam Long tipoDoacaoId){
         return pontoColetaService.listarCidadesPorTipo(tipoDoacaoId);
     }
