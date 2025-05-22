@@ -16,6 +16,12 @@ public class PontoColetaModel {
     @Column (nullable = false)
     private String endereco;
 
+    @Column (name = "dias_funcionamento", nullable = false)
+    private String diasFuncionamento;
+
+    @Column (name = "horario_funcionamento", nullable = false)
+    private String horarioFuncionamento;
+
     @ManyToOne
     @JoinColumn(name = "tipo_doacao_id", nullable = false)
     private TipoDoacaoModel tipoDoacao;
@@ -46,6 +52,14 @@ public class PontoColetaModel {
         return cidade;
     }
 
+    public String getDiasFuncionamento() {
+        return diasFuncionamento;
+    }
+
+    public String getHorarioFuncionamento() {
+        return horarioFuncionamento;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -60,5 +74,13 @@ public class PontoColetaModel {
 
     public void setCidade(CidadeModel cidade) {
         this.cidade = cidade;
+    }
+
+    public void setHorarioFuncionamento(String horarioFuncionamento) {
+        this.horarioFuncionamento = horarioFuncionamento;
+    }
+
+    public void setDiasFuncionamento(String diasFuncionamento) {
+        this.diasFuncionamento = diasFuncionamento;
     }
 }

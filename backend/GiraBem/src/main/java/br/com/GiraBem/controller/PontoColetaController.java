@@ -1,5 +1,6 @@
 package br.com.GiraBem.controller;
 
+import br.com.GiraBem.DTO.PontoColetaResponseDTO;
 import br.com.GiraBem.model.CidadeModel;
 import br.com.GiraBem.model.PontoColetaModel;
 import br.com.GiraBem.service.PontoColetaService;
@@ -52,9 +53,14 @@ public class PontoColetaController {
 
     //Busca e Endpoints personalizada
 
-    @GetMapping("/filtrar")
+    @GetMapping("/filtrar-semDTO/{tipoDoacaoId}/{cidadeId}") //Para testes. Não irá para o usuário
     public List<PontoColetaModel> filtrarPorTipoECidade(@RequestParam Long tipoDoacaoId, @RequestParam Long cidadeId){
         return pontoColetaService.filtrarPorTipoECidade(tipoDoacaoId, cidadeId);
+    }
+
+    @GetMapping("/filtrar") //Já com informações filtradas por aqui!
+    public List<PontoColetaResponseDTO> filtrarDTOporTipoECidade(@RequestParam Long tipoDoacaoId, @RequestParam Long cidadeId) {
+        return pontoColetaService.filtrarDTOporTipoECidade(tipoDoacaoId, cidadeId);
     }
 
     @GetMapping("/cidades-disponiveis")

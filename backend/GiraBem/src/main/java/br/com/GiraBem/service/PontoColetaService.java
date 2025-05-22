@@ -1,5 +1,6 @@
 package br.com.GiraBem.service;
 
+import br.com.GiraBem.DTO.PontoColetaResponseDTO;
 import br.com.GiraBem.model.TipoDoacaoModel;
 import br.com.GiraBem.repository.CidadeRepository;
 import br.com.GiraBem.repository.PontoColetaRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PontoColetaService {
@@ -23,7 +25,21 @@ public class PontoColetaService {
     @Autowired
     private CidadeRepository cidadeRepository;
 
+    //DTO (minha primeira vez usando, pode dar ruim)
+    private PontoColetaResponseDTO toResponseDTO(PontoColetaModel model){
+        return new PontoColetaResponseDTO(
+                model.getId(), model.getNome(), model.getEndereco(), model.getTipoDoacao().getNome(),
+                model.getCidade().getNome(), model.getDiasFuncionamento(),
+                model.getHorarioFuncionamento());
+    }
+
     //Listagem e filtragem
+    public List<PontoColetaResponseDTO> filtrarDTOporTipoECidade(Long tipoDoacaoId, Long cidadeId) {
+        return pontoColetaRepository.findByTipoDoacaoIdAndCidadeId(tipoDoacaoId, cidadeId).stream()
+                .map(this::toResponseDTO)
+                .collect(Collectors.toList()); //O único que o usuário verá, pelo menos atualmente
+    }
+
     public List<PontoColetaModel> listarTodos(){
         return pontoColetaRepository.findAll();
     }
