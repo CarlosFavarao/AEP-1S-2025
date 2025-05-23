@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gira Bem - Doação de Roupas</title>
+    <title>Gira Bem - Doação de Alimentos</title>
     <link rel="icon" href="https://i.postimg.cc/8P5Ly7qY/image.png" type="image/png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="doacao.css" />
@@ -38,12 +38,15 @@
         <label for="cidade" class="form-label">Selecione sua cidade para encontrar pontos de coleta:</label>
         <select class="form-select mb-3" id="cidade">
           <option selected>Escolha sua cidade</option>
-          <option value="maringa">Maringá</option>
-          <option value="sarandi">Sarandi</option>
-          <option value="paiçandu">Paiçandu</option>
+          <option value="1">Maringá</option>
+          <option value="2">Sarandi</option>
+          <option value="3">Paiçandu</option>
         </select>
         <div class="text-center">
-          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTour">
+          <button id="buscar-pontos-btn"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalTour">
             Buscar Pontos de Coleta
           </button>
         </div>
@@ -52,52 +55,27 @@
       <div id="resultado" class="mt-4 text-center"></div>
     </main>
 
-   <!-- Modal de Pontos de Coleta personalizado -->
-<div class="modal fade" id="modalTour" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-body p-5">
-        <h2 class="fw-bold mb-0">Pontos de Coleta</h2>
-        <ul class="d-grid gap-4 my-5 list-unstyled small">
-          <li class="d-flex align-items-start gap-2">
-            <img src="https://i.postimg.cc/3RVF8f1M/localizacao.png" alt="Localização" class="icone-modal">
-            <div>
-              <h5 class="mb-0">Centro Comunitário Esperança</h5>
-              <p id="info1">Rua das Flores, 123 - Segunda a Sexta - 08h às 17h</p>
-            </div>
-            <!-- Ícone de copiar -->
-            <button class="btn btn-sm btn-outline-success copy-btn" data-clipboard-target="#info1">
-              <i class="fa fa-copy"></i> <!-- Ícone de copiar -->
+    <!-- Modal de Pontos de Coleta personalizado -->
+    <div class="modal fade" id="modalTour" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-body p-5">
+            <h2 class="fw-bold mb-0">Pontos de Coleta</h2>
+            <!-- UL com ID para preenchermos via JS -->
+            <ul id="pontos-list" class="d-grid gap-4 my-5 list-unstyled small">
+              <!-- Será preenchido dinamicamente -->
+            </ul>
+            <button type="button"
+                    class="btn btn-lg btn-primary mt-5 w-100"
+                    data-bs-dismiss="modal">
+              Obrigado!
             </button>
-          </li>
-          <li class="d-flex align-items-start gap-2">
-            <img src="https://i.postimg.cc/3RVF8f1M/localizacao.png" alt="Localização" class="icone-modal">
-            <div>
-              <h5 class="mb-0">Escola Municipal Vida Nova</h5>
-              <p id="info2">Av. Brasil, 456 - Segundas, Quartas e Sextas - 09h às 16h</p>
-            </div>
-            <!-- Ícone de copiar -->
-            <button class="btn btn-sm btn-outline-success copy-btn" data-clipboard-target="#info2">
-              <i class="fa fa-copy"></i>
-            </button>
-          </li>
-          <li class="d-flex align-items-start gap-2">
-            <img src="https://i.postimg.cc/3RVF8f1M/localizacao.png" alt="Localização" class="icone-modal">
-            <div>
-              <h5 class="mb-0">Posto de Saúde São Lucas</h5>
-              <p id="info3"> Rua Saúde, 789 - Terças e Quintas - 10h às 15h</p>
-            </div>
-            <!-- Ícone de copiar -->
-            <button class="btn btn-sm btn-outline-success copy-btn" data-clipboard-target="#info3">
-              <i class="fa fa-copy"></i>
-            </button>
-          </li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-primary mt-5 w-100" data-bs-dismiss="modal">Obrigado!</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
+    <script src="filtro-tipo.js"></script>
 
     <!-- Incluindo o Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

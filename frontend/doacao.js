@@ -27,3 +27,21 @@ copyButtons.forEach(button => {
   });
 });
 
+// Script para exibir cidades com base no tipo de doação selecionado
+document.addEventListener("DOMContentLoaded", function () {
+  const tipoButtons = document.querySelectorAll(".tipo-doacao-btn");
+  const cidadeSections = document.querySelectorAll(".cidade-section");
+
+  tipoButtons.forEach(btn => {
+    btn.addEventListener("click", function () {
+      const tipo = btn.getAttribute("data-tipo");
+      cidadeSections.forEach(section => {
+        if (section.getAttribute("data-tipo") === tipo) {
+          section.style.display = "block";
+        } else {
+          section.style.display = "none";
+        }
+      });
+    });
+  });
+});
