@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const params         = new URLSearchParams(window.location.search);
   const tipoDoacaoId   = params.get('tipoDoacaoId'); // ex: ?tipoDoacaoId=1
 
-  // Elementos do DOM para buscar pontos
   const selectCidade = document.getElementById('cidade');
   const btnBuscar    = document.getElementById('buscar-pontos-btn');
   const ulPontos     = document.getElementById('pontos-list');
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    // limpa resultados antigos
     ulPontos.innerHTML = '';
 
 
